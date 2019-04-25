@@ -32,6 +32,7 @@ import Gallery from '@/components/Gallery.vue'
 import Loading from '@/components/Loading.vue'
 
 export default {
+  name: 'User Gallery',
   components: {
     Gallery,
     Loading
@@ -57,7 +58,7 @@ export default {
 
   computed: {
     user () {
-      return this.store.state.projects.user
+      return this.$store.state.projects.user
     },
 
     projects () {

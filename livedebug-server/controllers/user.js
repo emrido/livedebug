@@ -10,8 +10,8 @@ class UserController {
     };
 
     User.create(user)
-    .then(user => {
-      res.status(201).json(user);
+    .then(newUser => {
+      res.status(201).json(newUser);
     })
     .catch(err => {
       if (err.errors.email) {
@@ -26,7 +26,7 @@ class UserController {
 
   static login(req, res) {
     User
-     .findOne(req.body.email)
+     .findOne({ email: req.body.email})
      .then(user => {
        if (user) {
          if (regis.checkPassword(req.body.password, user.password)) {
@@ -58,7 +58,7 @@ class UserController {
        verificationCode: req.body.verificationCode
      }, {
        $set: { isVerified: true }
-     })
+     }, {new: true} )
      .then(user => {
        if(user) {
          res.status(200).json(user);
@@ -67,6 +67,7 @@ class UserController {
        }
      })
      .catch(err => {
+       console.log(err)
        res.status(500).json(err);
      })
   }

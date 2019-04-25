@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  props: [],
+  name: 'Gallery',
+  props: ['name', 'description', 'covers'],
   computed: {
     coverUrl () {
       return {

@@ -3,7 +3,7 @@ const Account = require('../models/account');
 class AccountController {
   static findAccounts(req, res) {
     Account.findOne({ accountNumber: req.params.accountNumber })
-     .populate('user')
+     .populate('userId')
      .then(account => {
        res.status(200).json(account);
      })
@@ -14,8 +14,7 @@ class AccountController {
 
   static newAccount(req, res) {
     let acc = null;
-
-    if (req.body.hasOwnProperty('balance')) {
+    if (req.body.balance) {
       acc = {
         balance: req.body.balance,
         userId: req.user._id

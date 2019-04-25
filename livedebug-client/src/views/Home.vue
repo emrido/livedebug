@@ -16,12 +16,12 @@
           :occupation="user.occupation"
           :stats="user.stats"
           :picture="user.images"
-          @detail="seeProject"
+          @showDetail="seeProject"
         />
       </div>
     </div>
 
-    <routing-view @myFavorite="myFavorite"/>
+    <router-view :myFavorite="myFavorite"/>
   </div>
 </template>
 

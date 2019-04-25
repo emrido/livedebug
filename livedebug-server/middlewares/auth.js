@@ -5,9 +5,9 @@ const Transaction = require('../models/transaction');
 
 module.exports = {
   authentication: function(req, res, next) {
-    let token = req.header.token;
-
-    if (token) {
+    let token = req.headers.token;
+    
+    if (!token) {
       res.status(401).json({ error: 'You must login to access this endpoint' });
     } else {
       let decoded = jwt.verify(token);

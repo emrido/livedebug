@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto py-5">
     <!-- Search Interface -->
-    <form action>
+    <form action  @submit.prevent="findCollections">
       <div class="flex w-full mb-6">
         <div class="w-4/5 relative">
           <input
@@ -29,7 +29,7 @@
         <button
           class="bg-indigo text-white font-semibold rounded-r h-11 w-1/5 ml-auto"
           type="submit"
-          @submit.prevent="findCollections"
+         
         >
           <span v-show="!loading">Find Collections</span>
           <i class="fas fa-spinner fa-2x fa-spin" v-show="loading"></i>
@@ -74,8 +74,9 @@
 import Gallery from '@/components/Gallery.vue'
 
 export default {
+  name: 'Collection',
   data () {
-    const returnData = {
+    return {
       search: '',
       loading: false
     }
